@@ -120,13 +120,6 @@ This example provides instructions for hyperparameter optimization.
 	```		
 	this sets the run mode to hyperparameter optimization, with a set number of trials and concurrency. Concurrently sets the number of trials to be performed in parallel; this number should be higher than the number of available devices to avoid bottlenecking. The program should automatically detect number of GPUs and run on each device accordingly. Finally, an output will be written called "optimized_hyperparameters.json" which contains the hyperparameters for the model with the lowest test error. Raw results are saved in a directory called "ray_results."
 
-### Ensemble
-
-Ensemble functionality is provided here in the form of stacked models, where prediction output is the average of individual models. "ensemble_list" in the config.yml controls the list of individual models represented as a comma separated string.
-
-```bash
-python main.py --data_path=data/test_data --run_mode=Ensemble
-```		
 
 ### Repeat trials
 
