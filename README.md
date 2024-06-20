@@ -53,7 +53,7 @@ This example provides instructions for adsorption capacity prediction. Procedure
 	```
 	where default settings will be used and configurations will be read from the provided config.yml.
 	
-3. The program will begin training; As default, the program will provide two outputs: (1) "XXX_model.pth" which is a saved model which can be used for predictions on new structures, (2) "XXX_job_train_job_YYY_outputs.csv" where YYY are train, val and test; these contain structure ids, targets and the predicted values from the last epoch of training and validation, and for the test set.
+3. The program will begin training; As default, the program will provide two outputs: (1) "XXX_model.pth" which is a saved model which can be used for predictions on new structures, (2) "XXX_job_train_job_YYY_outputs.csv" where XXX are the names of models (MultiScaleGNN, CGCNN, GCN, MPNN, MEGNet),  YYY are train, val and test; these contain structure ids, targets and the predicted values from the last epoch of training and validation, and for the test set.
 
 ### The configuration file
 
