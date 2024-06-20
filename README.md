@@ -112,7 +112,7 @@ This example provides instructions for a conventional ML task of training on an 
 Sometimes it is desirable to obtain performance averaged over many trials. Specify repeat_trials in the config.yml for how many trials to run.
 
 ```bash
-python main.py --data_path=data/test_data --run_mode=Repeat
+python main.py --data_path=data/MOF_data --run_mode=Repeat
 ```		
 
 ### Cross validation
@@ -120,7 +120,7 @@ python main.py --data_path=data/test_data --run_mode=Repeat
 Specify cv_folds in the config.yml for how many folds in the CV.
 
 ```bash
-python main.py --data_path=data/test_data --run_mode=CV
+python main.py --data_path=data/MOF_data --run_mode=CV
 ```		
 
 ### Analysis
@@ -128,7 +128,7 @@ python main.py --data_path=data/test_data --run_mode=CV
 This mode allows the visualization of graph-wide features with t-SNE.
 
 ```bash
-python main.py --data_path=data/test_data --run_mode=Analysis --model_path=XXX
+python main.py --data_path=data/MOF_data --run_mode=Analysis --model_path=XXX
 ```		
 ## Acknowledgements
 
