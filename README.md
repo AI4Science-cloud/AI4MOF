@@ -41,15 +41,15 @@ Prerequisites are listed in requirements.txt. You will need two key packages, 1.
 
 This example provides instructions for adsorption capacity prediction. Procedure below:
 
-1. Go to MOF_graph/data/ and type
+1. Go to MOF_graph/data/MOF_data and type
 	```bash
-	tar -xvf test_data.tar.gz 
+	tar -xvf MOF_database.tar.gz 
 	```
-	to unpack the a test dataset of Pt clusters.
+	to unpack the dataset.
 	
 2.	Go to MOF_graph, type
 	```bash
-	python main.py --data_path=data/test_data/test_data
+	python main.py --data_path=data/MOF_data/MOF_data
 	```
 	where default settings will be used and configurations will be read from the provided config.yml.
 	
