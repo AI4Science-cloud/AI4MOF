@@ -88,9 +88,9 @@ There are four categories or sections: 1. Job, 2. Processing, 3. Training, 4. Mo
 
 This example provides instructions for a conventional ML task of training on an existing MOF dataset, and using a trained model to provide predictions on the MOF dataset for screening.
 
-1. To run, MatDeepLearn requires: 
+1. To run GNN models requires: 
 	- A configuration file, config.yml, as described in the previous section. 
-	- A dataset directory containing structure files, a csv file containing structure ids and target properties (default: targets.csv), and optionally a json file containing elemental properties (default: atom_dict.json). Five example datasets are provided with all requisite files needed. Structure files such as .cif format.
+	- A dataset directory containing structure files, a csv file containing structure ids and target properties (default: targets.csv), and optionally a json file containing elemental properties (default: atom_dict.json). Structure files such as .cif format.
 
 2. It is then necessary to first train the ML model an on existing dataset with available target properties. A general example for training is:
 
