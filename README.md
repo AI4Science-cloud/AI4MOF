@@ -84,13 +84,13 @@ There are four categories or sections: 1. Job, 2. Processing, 3. Training, 4. Mo
 4. **Models:** This section encodes the settings specific to the model used, aka hyperparameters. Example hyperparameters are provided in the example config.yml. Only the settings for the model selected in the Job section will be used. Model settings which can be changed in the command line are: --epochs, --batch_size, and --lr.
 
 
-### Training and prediction on an unseen dataset
+### Training and prediction on MOF dataset
 
-This example provides instructions for a conventional ML task of training on an existing dataset, and using a trained model to provide predictions on an unseen dataset for screening. This assumes the model used is already sufficiently good at the task to be performed (with suitable model hyperparameters, etc.). The default hyperparameters can do a reasonably good job for testing purposes; for hyperparameter optimization refer to the next section.
+This example provides instructions for a conventional ML task of training on an existing MOF dataset, and using a trained model to provide predictions on the MOF dataset for screening.
 
 1. To run, MatDeepLearn requires: 
 	- A configuration file, config.yml, as described in the previous section. 
-	- A dataset directory containing structure files, a csv file containing structure ids and target properties (default: targets.csv), and optionally a json file containing elemental properties (default: atom_dict.json). Five example datasets are provided with all requisite files needed. Structure files can take any format supported by the Atomic Simulation Environment [(ASE)](https://wiki.fysik.dtu.dk/ase/) such as .cif, .xyz, POSCAR, and ASE's own .json format.
+	- A dataset directory containing structure files, a csv file containing structure ids and target properties (default: targets.csv), and optionally a json file containing elemental properties (default: atom_dict.json). Five example datasets are provided with all requisite files needed. Structure files such as .cif format.
 
 2. It is then necessary to first train the ML model an on existing dataset with available target properties. A general example for training is:
 
