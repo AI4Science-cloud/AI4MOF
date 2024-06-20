@@ -90,7 +90,7 @@ This example provides instructions for a conventional ML task of training on an 
 
 1. To run GNN models requires: 
 	- A configuration file, config.yml, as described in the previous section. 
-	- A dataset directory containing structure files, a csv file containing structure ids and target properties (default: targets.csv), and optionally a json file containing elemental properties (default: atom_dict.json). Structure files such as .cif format.
+	- A dataset directory containing structure files(.cif), a csv file containing structure ids and target properties (default: targets.csv), and optionally a json file containing elemental properties (default: atom_dict.json).
 
 2. It is then necessary to first train the ML model an on existing dataset with available target properties. A general example for training is:
 
