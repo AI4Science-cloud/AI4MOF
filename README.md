@@ -104,7 +104,7 @@ This example provides instructions for a conventional ML task of training on an 
 	```bash
 	python main.py --data_path='YYY' --job_name="my_prediction_job" --run_mode='Predict' --model_path='my_trained_model.pth'
 	```		
-	where the "data_path" and "run_mode" are now updated, and the model path is specified. The predictions will then be saved to my_prediction_job_predicted_outputs.csv for analysis.
+	where the "data_path", "run_mode" and "model path" are specified. The predictions will then be saved to my_prediction_job_predicted_outputs.csv for analysis.
 	
 
 ### Repeat trials
