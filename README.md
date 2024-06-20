@@ -61,7 +61,7 @@ The configuration file is provided in .yml format and encodes all the settings u
 
 There are four categories or sections: 1. Job, 2. Processing, 3. Training, 4. Models
 
-1. **Job:** This section encodes the settings specific to the type of job to run. Current supported are: Training, Predict, Repeat, CV, Hyperparameter, Ensemble, Analysis. The program will only read the section for the current job, which is selected by --run_mode in the command line, e.g. --run_mode=Training. Some other settings which can be changed in the command line are: --job_name, --model, --seed, --parallel.
+1. **Job:** This section encodes the settings specific to the type of job to run. Current supported are: Training, Predict, Repeat, Analysis. The program will only read the section for the current job, which is selected by --run_mode in the command line, e.g. --run_mode=Training. Some other settings which can be changed in the command line are: --job_name, --model, --seed, --parallel.
 
 2. **Processing:** This section encodes the settings specific to the processing of structures to graphs or other features. Primary settings are the "graph_max_radius", "graph_max_neighbors" and "graph_edge_length" which controls radius cutoff for edges, maximum number of edges, and length of edges from a basis expansion, respectively. Prior to this, the directory path containing the structure files must be specified by "data_path" in the file or --data_path in the command line.
 
