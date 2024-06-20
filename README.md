@@ -31,9 +31,28 @@ Prerequisites are listed in requirements.txt. You will need two key packages, 1.
 
 3. **Remaining requirements:** The remainder may be installed by:
 	```bash
-    git clone https://github.com/vxfung/MOF_graph
-    cd MatDeepLearn    
+    git clone https://github.com/AI4Science-cloud/AI4MOF
+    cd MOF_graph    
 	pip install -r requirements.txt
 	```
+## Usage
+
+### Running your first calculation
+
+This example provides instructions for a bare minimum calculation. We will run the example with a on a small dataset (the Pt subset dataset containing ~1000 entries). This is just a toy example to test if the package is installed and working. Procedure below:
+
+1. Go to MOF_graph/data/ and type
+	```bash
+	tar -xvf test_data.tar.gz 
+	```
+	to unpack the a test dataset of Pt clusters.
+	
+2.	Go to MOF_graph, type
+	```bash
+	python main.py --data_path=data/test_data/test_data
+	```
+	where default settings will be used and configurations will be read from the provided config.yml.
+	
+3. The program will begin training; As default, the program will provide two outputs: (1) "XXX_model.pth" which is a saved model which can be used for predictions on new structures, (2) "XXX_job_train_job_YYY_outputs.csv" where YYY are train, val and test; these contain structure ids, targets and the predicted values from the last epoch of training and validation, and for the test set.
 
  
