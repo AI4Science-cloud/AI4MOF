@@ -95,9 +95,9 @@ This example provides instructions for a conventional ML task of training on an 
 2. It is then necessary to first train the ML model an on existing dataset with available target properties. A general example for training is:
 
 	```bash
-	python main.py --data_path='XXX' --job_name="my_training_job" --run_mode='Training' --model='CGCNN_demo' --save_model='True' --model_path='my_trained_model.pth'
+	python main.py --data_path='XXX' --job_name="MultiScaleGNN_training_job" --run_mode='Training' --model='MultiScaleGNN_demo' --save_model='True' --model_path='MultiScaleGNN_trained_model.pth'
 	```		
-	where "data_path" points to the path of the training dataset, "model" selects the model to use, and "run_mode" specifies training. Once finished, a "my_trained_model.pth" should be saved. 
+	where "data_path" points to the path of the training dataset, "model" selects the model to use, and "run_mode" specifies training. Once finished, a "MultiScaleGNN_trained_model.pth" should be saved. 
 
 3. Run the prediction on an unseen dataset by:
 
