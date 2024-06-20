@@ -39,7 +39,7 @@ Prerequisites are listed in requirements.txt. You will need two key packages, 1.
 
 ### Running your first calculation
 
-This example provides instructions for a bare minimum calculation. We will run the example with a on a small dataset (the Pt subset dataset containing ~1000 entries). This is just a toy example to test if the package is installed and working. Procedure below:
+This example provides instructions for adsorption capacity prediction. Procedure below:
 
 1. Go to MOF_graph/data/ and type
 	```bash
