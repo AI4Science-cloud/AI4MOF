@@ -55,4 +55,19 @@ This example provides instructions for adsorption capacity prediction. Procedure
 	
 3. The program will begin training; As default, the program will provide two outputs: (1) "XXX_model.pth" which is a saved model which can be used for predictions on new structures, (2) "XXX_job_train_job_YYY_outputs.csv" where YYY are train, val and test; these contain structure ids, targets and the predicted values from the last epoch of training and validation, and for the test set.
 
+### The configuration file
+
+The configuration file is provided in .yml format and encodes all the settings used. By default it should be in the same directory as main.py or specified in a separate location by --config_path in the command line. 
+
+There are four categories or sections: 1. Job, 2. Processing, 3. Training, 4. Models
+
+1. **Job:** This section encodes the settings specific to the type of job to run. Current supported are: Training, Predict, Repeat, CV, Hyperparameter, Ensemble, Analysis. The program will only read the section for the current job, which is selected by --run_mode in the command line, e.g. --run_mode=Training. Some other settings which can be changed in the command line are: --job_name, --model, --seed, --parallel.
+
+2. **Processing:** This section encodes the settings specific to the processing of structures to graphs or other features. Primary settings are the "graph_max_radius", "graph_max_neighbors" and "graph_edge_length" which controls radius cutoff for edges, maximum number of edges, and length of edges from a basis expansion, respectively. Prior to this, the directory path containing the structure files must be specified by "data_path" in the file or --data_path in the command line.
+
+3. **Training:** This section encodes the settings specific to the training. Primary settings are the "loss", "train_ratio" and "val_ratio" and "test_ratio". This can also be specified in the command line by --train_ratio, --val_ratio, --test_ratio.
+
+4. **Models:** This section encodes the settings specific to the model used, aka hyperparameters. Example hyperparameters are provided in the example config.yml. Only the settings for the model selected in the Job section will be used. Model settings which can be changed in the command line are: --epochs, --batch_size, and --lr.
+
+
  
