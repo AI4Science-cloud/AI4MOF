@@ -106,20 +106,6 @@ This example provides instructions for a conventional ML task of training on an 
 	```		
 	where the "data_path" and "run_mode" are now updated, and the model path is specified. The predictions will then be saved to my_prediction_job_predicted_outputs.csv for analysis.
 	
-### Hyperparameter optimization
-
-This example provides instructions for hyperparameter optimization. 
-
-1. Similar to regular training, ensure the dataset is available with requisite files in the directory.
-
-2. To run hyperparameter optimization, one must first define the hyperparameter search space. MatDeepLearn uses [RayTune](https://docs.ray.io/en/master/tune/index.html) for distributed optimization, and the search space is defined with their provided methods. The choice of search space will depend on many factors, including available computational resources and focus of the study; we provide some examples for the existing models in main.py.
-
-3. Assuming the search space is defined, we run hyperparameter optimization with :
-	```bash
-	python main.py --data_path=data/test_data --model='CGCNN_demo' --job_name="my_hyperparameter_job" --run_mode='Hyperparameter'
-	```		
-	this sets the run mode to hyperparameter optimization, with a set number of trials and concurrency. Concurrently sets the number of trials to be performed in parallel; this number should be higher than the number of available devices to avoid bottlenecking. The program should automatically detect number of GPUs and run on each device accordingly. Finally, an output will be written called "optimized_hyperparameters.json" which contains the hyperparameters for the model with the lowest test error. Raw results are saved in a directory called "ray_results."
-
 
 ### Repeat trials
 
