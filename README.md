@@ -69,5 +69,93 @@ There are four categories or sections: 1. Job, 2. Processing, 3. Training, 4. Mo
 
 4. **Models:** This section encodes the settings specific to the model used, aka hyperparameters. Example hyperparameters are provided in the example config.yml. Only the settings for the model selected in the Job section will be used. Model settings which can be changed in the command line are: --epochs, --batch_size, and --lr.
 
+### The configuration file
 
- 
+The configuration file is provided in .yml format and encodes all the settings used. By default it should be in the same directory as main.py or specified in a separate location by --config_path in the command line. 
+
+There are four categories or sections: 1. Job, 2. Processing, 3. Training, 4. Models
+
+1. **Job:** This section encodes the settings specific to the type of job to run. Current supported are: Training, Predict, Repeat, CV, Hyperparameter, Ensemble, Analysis. The program will only read the section for the current job, which is selected by --run_mode in the command line, e.g. --run_mode=Training. Some other settings which can be changed in the command line are: --job_name, --model, --seed, --parallel.
+
+2. **Processing:** This section encodes the settings specific to the processing of structures to graphs or other features. Primary settings are the "graph_max_radius", "graph_max_neighbors" and "graph_edge_length" which controls radius cutoff for edges, maximum number of edges, and length of edges from a basis expansion, respectively. Prior to this, the directory path containing the structure files must be specified by "data_path" in the file or --data_path in the command line.
+
+3. **Training:** This section encodes the settings specific to the training. Primary settings are the "loss", "train_ratio" and "val_ratio" and "test_ratio". This can also be specified in the command line by --train_ratio, --val_ratio, --test_ratio.
+
+4. **Models:** This section encodes the settings specific to the model used, aka hyperparameters. Example hyperparameters are provided in the example config.yml. Only the settings for the model selected in the Job section will be used. Model settings which can be changed in the command line are: --epochs, --batch_size, and --lr.
+
+
+### Training and prediction on an unseen dataset
+
+This example provides instructions for a conventional ML task of training on an existing dataset, and using a trained model to provide predictions on an unseen dataset for screening. This assumes the model used is already sufficiently good at the task to be performed (with suitable model hyperparameters, etc.). The default hyperparameters can do a reasonably good job for testing purposes; for hyperparameter optimization refer to the next section.
+
+1. To run, MatDeepLearn requires: 
+	- A configuration file, config.yml, as described in the previous section. 
+	- A dataset directory containing structure files, a csv file containing structure ids and target properties (default: targets.csv), and optionally a json file containing elemental properties (default: atom_dict.json). Five example datasets are provided with all requisite files needed. Structure files can take any format supported by the Atomic Simulation Environment [(ASE)](https://wiki.fysik.dtu.dk/ase/) such as .cif, .xyz, POSCAR, and ASE's own .json format.
+
+2. It is then necessary to first train the ML model an on existing dataset with available target properties. A general example for training is:
+
+	```bash
+	python main.py --data_path='XXX' --job_name="my_training_job" --run_mode='Training' --model='CGCNN_demo' --save_model='True' --model_path='my_trained_model.pth'
+	```		
+	where "data_path" points to the path of the training dataset, "model" selects the model to use, and "run_mode" specifies training. Once finished, a "my_trained_model.pth" should be saved. 
+
+3. Run the prediction on an unseen dataset by:
+
+	```bash
+	python main.py --data_path='YYY' --job_name="my_prediction_job" --run_mode='Predict' --model_path='my_trained_model.pth'
+	```		
+	where the "data_path" and "run_mode" are now updated, and the model path is specified. The predictions will then be saved to my_prediction_job_predicted_outputs.csv for analysis.
+	
+### Hyperparameter optimization
+
+This example provides instructions for hyperparameter optimization. 
+
+1. Similar to regular training, ensure the dataset is available with requisite files in the directory.
+
+2. To run hyperparameter optimization, one must first define the hyperparameter search space. MatDeepLearn uses [RayTune](https://docs.ray.io/en/master/tune/index.html) for distributed optimization, and the search space is defined with their provided methods. The choice of search space will depend on many factors, including available computational resources and focus of the study; we provide some examples for the existing models in main.py.
+
+3. Assuming the search space is defined, we run hyperparameter optimization with :
+	```bash
+	python main.py --data_path=data/test_data --model='CGCNN_demo' --job_name="my_hyperparameter_job" --run_mode='Hyperparameter'
+	```		
+	this sets the run mode to hyperparameter optimization, with a set number of trials and concurrency. Concurrently sets the number of trials to be performed in parallel; this number should be higher than the number of available devices to avoid bottlenecking. The program should automatically detect number of GPUs and run on each device accordingly. Finally, an output will be written called "optimized_hyperparameters.json" which contains the hyperparameters for the model with the lowest test error. Raw results are saved in a directory called "ray_results."
+
+### Ensemble
+
+Ensemble functionality is provided here in the form of stacked models, where prediction output is the average of individual models. "ensemble_list" in the config.yml controls the list of individual models represented as a comma separated string.
+
+```bash
+python main.py --data_path=data/test_data --run_mode=Ensemble
+```		
+
+### Repeat trials
+
+Sometimes it is desirable to obtain performance averaged over many trials. Specify repeat_trials in the config.yml for how many trials to run.
+
+```bash
+python main.py --data_path=data/test_data --run_mode=Repeat
+```		
+
+### Cross validation
+
+Specify cv_folds in the config.yml for how many folds in the CV.
+
+```bash
+python main.py --data_path=data/test_data --run_mode=CV
+```		
+
+### Analysis
+
+This mode allows the visualization of graph-wide features with t-SNE.
+
+```bash
+python main.py --data_path=data/test_data --run_mode=Analysis --model_path=XXX
+```		
+## Acknowledgements
+
+Contributors: Lujun Li
+## Contact
+
+Code is maintained by:
+
+[Lujun Li]
