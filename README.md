@@ -125,7 +125,7 @@ python main.py --data_path=data/MOF_data --run_mode=CV
 
 ### Analysis
 
-This mode allows the visualization of graph-wide features with t-SNE.
+This mode allows the visualization of graph attention 
 
 ```bash
 python main.py --data_path=data/MOF_data --run_mode=Analysis --model_path=XXX
